@@ -1,0 +1,121 @@
+---
+title: "Question 2: Please stay in Cape Town"
+author: "Austin Byrne"
+date: "June 2023"
+# date: "`r Sys.Date()`"
+bibliography: Tex/ref.bib       # Do not edit: Keep this naming convention and location.
+output:
+  pagedown::html_paged:
+    # template: wp_paged.html
+    # css: ['wp.css', 'wp-fonts.css', 'wp-page.css']
+    css: ["Template/default-fonts-Texevier.css", "Template/default-page-Texevier.css", "Template/default-Texevier.css"]
+    csl: Template/harvard-stellenbosch-university.csl # referencing format used.
+    template: ["Template/paged-Texevier.html"]
+
+    toc: true
+    # change to true for a self-contained document, but it'll be a litte slower for Pandoc to render
+    self_contained: TRUE
+abstract: |
+    This is an abstract. Much can be written here. Uncomment this line to go without an abstract.
+    Abstracts have no spaces, but can have bullets.
+
+    Bullets can be created as follows
+
+    + You can add bullets, but do not add colons please.
+
+    + Line breaks are also not permitted.
+
+---
+
+```{r setup, eval=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message=FALSE, warning=FALSE)
+pacman::p_load(modelsummary, gt, knitr, kableExtra, tidyverse)
+
+install.packages("tinytex")
+library(tinytex)
+tinytex::install_tinytex()
+```
+
+```{r}
+library(tidyverse)
+list.files('C:/Users/austi/OneDrive/Desktop/Masters/Data Science/22582053/Question 2/code', full.names = T, recursive = T) %>% as.list() %>% walk(~source(.))
+```
+
+\newpage
+
+# Introduction {-}
+
+
+# Data 
+
+```{r}
+library(readr)
+london_weather <- read_csv("C:/Users/austi/OneDrive/Desktop/Masters/Data Science/22582053/Question 2/data/london_weather.csv")
+
+
+```
+
+## creating data frame with max, min and average
+
+```{r}
+library(ggplot2)
+library(dplyr)
+library(lubridate)
+
+
+london_max_mean_min <- london_weather_trends(london_weather)
+```
+
+## Plotting the max, min and average
+
+```{r}
+temp_trend_plot(london_max_mean_min)
+```
+
+## Looking at the amount of sunshine london gets
+
+## Creating a data frame with sunshine
+
+```{r}
+
+    
+london_sunshine <- calculate_avg_sunshine(london_weather)
+
+```
+
+## Ploting hours of sunshine per day on average
+
+```{r}
+plot_avg_sunshine(london_sunshine)
+
+```
+
+## Plotting London hours of sunshine per day for 2020
+
+```{r}
+london_sunshine_last_year<- london_weather %>% 
+    arrange(date) %>% 
+    mutate(date = as.Date(as.character(date), format = "%Y%m%d")) %>% 
+    filter(date>= lubridate::ymd("20200101")) 
+
+plot_sunshine_per_day(london_sunshine_last_year)
+
+
+```
+
+
+# References {-}
+
+<div id="refs"></div>
+
+
+# Appendix {-}
+
+## Appendix A {-}
+
+Some appendix information here
+
+## Appendix B {-}
+
+
+

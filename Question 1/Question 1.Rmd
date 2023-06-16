@@ -1,0 +1,102 @@
+---
+title: "Question 1: Covid"
+author: "Austin Byrne"
+date: "June 2023"
+# date: "`r Sys.Date()`"
+bibliography: Tex/ref.bib       # Do not edit: Keep this naming convention and location.
+output:
+  pagedown::html_paged:
+    # template: wp_paged.html
+    # css: ['wp.css', 'wp-fonts.css', 'wp-page.css']
+    css: ["Template/default-fonts-Texevier.css", "Template/default-page-Texevier.css", "Template/default-Texevier.css"]
+    csl: Template/harvard-stellenbosch-university.csl # referencing format used.
+    template: ["Template/paged-Texevier.html"]
+
+    toc: true
+    # change to true for a self-contained document, but it'll be a litte slower for Pandoc to render
+    self_contained: TRUE
+abstract: |
+    This is an abstract. Much can be written here. Uncomment this line to go without an abstract.
+    Abstracts have no spaces, but can have bullets.
+
+    Bullets can be created as follows
+
+    + You can add bullets, but do not add colons please.
+
+    + Line breaks are also not permitted.
+
+---
+
+```{r setup, eval=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message=FALSE, warning=FALSE)
+pacman::p_load(modelsummary, gt, knitr, kableExtra, tidyverse)
+
+install.packages("tinytex")
+library(tinytex)
+tinytex::install_tinytex()
+```
+
+```{r}
+library(tidyverse)
+list.files('C:/Users/austi/OneDrive/Desktop/Masters/Data Science/22582053/Question 1/code', full.names = T, recursive = T) %>% as.list() %>% walk(~source(.))
+
+```
+
+\newpage
+
+# Introduction {-}
+
+
+
+
+# Data 
+
+```{r include=FALSE}
+covid_data_description <- read_csv("C:/Users/austi/OneDrive/Desktop/Masters/Data Science/22582053/Question 1/data/covid_data_description.csv")
+Deaths_by_cause <- read_csv("C:/Users/austi/OneDrive/Desktop/Masters/Data Science/22582053/Question 1/data/Deaths_by_cause.csv")
+owid_covid_data <- read_csv("C:/Users/austi/OneDrive/Desktop/Masters/Data Science/22582053/Question 1/data/owid-covid-data.csv")
+```
+
+
+# obtaining the total cases, total deaths on the last date: 
+
+```{r}
+Final_total_covid_cases <- obtain_total_covid_casses_function(owid_covid_data)
+print(Final_total_covid_cases)
+
+Final_total_covid_deaths <- obtain_total_deaths_function(owid_covid_data)
+```
+
+# Comparing the effect of Covid-19 on different continents
+
+## Total cases
+
+```{r}
+covid_continent_data <- continent_comparer_function(owid_covid_data, continent) #In this line of code I use a function that groups by continent and then provides a summary for the total cases, total deaths and total new cases. 
+
+bar_plot_covid_data(Final_total_covid_cases)
+```
+
+## Total deaths 
+
+```{r}
+bar_plot_covid_deaths_data(Final_total_covid_deaths)
+```
+
+
+
+# References {-}
+
+<div id="refs"></div>
+
+
+# Appendix {-}
+
+## Appendix A {-}
+
+Some appendix information here
+
+## Appendix B {-}
+
+
+
