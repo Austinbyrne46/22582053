@@ -87,6 +87,20 @@ Plots_combined <- plots_combining_function(installs_bar_plot, plot_sentiment)
 print(Plots_combined)
 ```
 
+# Table for average rating free vs paid apps
+
+
+```{r}
+free_app_rating <- rating_average_calculator(app_merged_data, "Free")
+paid_app_rating <- rating_average_calculator(app_merged_data, "Paid")
+free_app_sentiment_polarity <- sentiment_polarity_calculator(app_merged_data, "Free")
+paid_app_sentiment_polarity <- sentiment_polarity_calculator(app_merged_data, "Paid")
+
+table_app_rating_sentiment_average <- table_rating_polarity_average(app_merged_data, free_app_rating, paid_app_rating, free_app_sentiment_polarity, paid_app_sentiment_polarity)
+
+table_app_rating_sentiment_average
+```
+
 
 
 # References {-}
