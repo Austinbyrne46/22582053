@@ -1,0 +1,106 @@
+---
+title: "Question 5: Finding a profitable app design"
+author: "Austin Byrne"
+date: "June 2023"
+# date: "`r Sys.Date()`"
+bibliography: Tex/ref.bib       # Do not edit: Keep this naming convention and location.
+output:
+  pagedown::html_paged:
+    # template: wp_paged.html
+    # css: ['wp.css', 'wp-fonts.css', 'wp-page.css']
+    css: ["Template/default-fonts-Texevier.css", "Template/default-page-Texevier.css", "Template/default-Texevier.css"]
+    csl: Template/harvard-stellenbosch-university.csl # referencing format used.
+    template: ["Template/paged-Texevier.html"]
+
+    toc: true
+    # change to true for a self-contained document, but it'll be a litte slower for Pandoc to render
+    self_contained: TRUE
+abstract: |
+    This is an abstract. Much can be written here. Uncomment this line to go without an abstract.
+    Abstracts have no spaces, but can have bullets.
+
+    Bullets can be created as follows
+
+    + You can add bullets, but do not add colons please.
+
+    + Line breaks are also not permitted.
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message=FALSE, warning=FALSE)
+pacman::p_load(modelsummary, gt, knitr, kableExtra, tidyverse)
+```
+
+```{r}
+library(tidyverse)
+list.files('C:/Users/austi/OneDrive/Desktop/Masters/Data Science/22582053/Question 5/code', full.names = T, recursive = T) %>% as.list() %>% walk(~source(.))
+```
+
+\newpage
+
+# Introduction {-}
+
+
+# Data 
+
+## Loading data 
+
+```{r}
+library(readr)
+google_playstore <- read_csv("C:/Users/austi/OneDrive/Desktop/Masters/Data Science/22582053/Question 5/data/googleplaystore.csv")
+
+googleplaystore_user_reviews <- read_csv("C:/Users/austi/OneDrive/Desktop/Masters/Data Science/22582053/Question 5/data/googleplaystore_user_reviews.csv")
+```
+
+## Creating a date column 
+
+```{r}
+library(dplyr)
+library(lubridate)
+
+google_playstore$`Last Updated` <- mdy(google_playstore$`Last Updated`)
+
+```
+
+## Lets join the two datasets
+
+```{r}
+# Joining the two datasets together
+app_merged_data <- left_join(google_playstore,googleplaystore_user_reviews, by = "App")
+
+```
+
+# Creating the plot 
+
+```{r}
+# Creating total installs plot 
+installs_bar_plot <- total_installs_bar_plot(google_playstore)
+
+# Creating plot of sentiment
+plot_sentiment <- sentiment_bar_plot(app_merged_data)
+
+# joining the two plots together
+Plots_combined <- plots_combining_function(installs_bar_plot, plot_sentiment)
+
+# Display the combined plot
+print(Plots_combined)
+```
+
+
+
+# References {-}
+
+<div id="refs"></div>
+
+
+# Appendix {-}
+
+## Appendix A {-}
+
+Some appendix information here
+
+## Appendix B {-}
+
+
+

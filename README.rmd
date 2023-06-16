@@ -23,6 +23,7 @@ pacman::p_load(tidyverse)
 pacman::p_load(readxl)
 pacman::p_load(readr)
 pacman::p_load(ggplot2)
+library(tidyverse)
 ```
 
 
@@ -35,5 +36,62 @@ Texevier::create_template_html(directory = "C:/Users/austi/OneDrive/Desktop/Mast
                           template_name = "Question 1",
                           build_project = T, open_project = T)
 
+```
+
+```{r}
+library(tidyverse)
+list.files('C:/Users/austi/OneDrive/Desktop/Masters/Data Science/22582053/Question 1/code', full.names = T, recursive = T) %>% as.list() %>% walk(~source(.))
+```
+
+```{r include=FALSE}
+covid_data_description <- read_csv("C:/Users/austi/OneDrive/Desktop/Masters/Data Science/22582053/Question 1/data/covid_data_description.csv")
+Deaths_by_cause <- read_csv("C:/Users/austi/OneDrive/Desktop/Masters/Data Science/22582053/Question 1/data/Deaths_by_cause.csv")
+owid_covid_data <- read_csv("C:/Users/austi/OneDrive/Desktop/Masters/Data Science/22582053/Question 1/data/owid-covid-data.csv")
+```
+
+# obtaining the total cases, total deaths on the last date: 
+
+```{r}
+Final_total_covid_cases <- obtain_total_covid_casses_function(owid_covid_data)
+print(Final_total_covid_cases)
+
+Final_total_covid_deaths <- obtain_total_deaths_function(owid_covid_data)
+```
+
+# Comparing the effect of Covid-19 on different continents
+
+## Total cases
+
+```{r}
+covid_continent_data <- continent_comparer_function(owid_covid_data, continent) #In this line of code I use a function that groups by continent and then provides a summary for the total cases, total deaths and total new cases. 
+
+bar_plot_covid_data(Final_total_covid_cases)
+```
+
+## Total deaths 
+
+```{r}
+bar_plot_covid_deaths_data(Final_total_covid_deaths)
+```
+
+
+# Question 2 
+
+## Setting up the file structure for Question 2
+
+```{r eval=FALSE}
+Texevier::create_template_html(directory = "C:/Users/austi/OneDrive/Desktop/Masters/Data Science/22582053",
+                          template_name = "Question 2",
+                          build_project = T, open_project = T)
+```
+
+# Question 4 
+
+## Setting up the file structure for Question 4 
+
+```{r eval=FALSE}
+Texevier::create_template(directory = "C:/Users/austi/OneDrive/Desktop/Masters/Data Science/22582053",
+                          template_name = "Question 4",
+                          build_project = T, open_project = T)
 ```
 
