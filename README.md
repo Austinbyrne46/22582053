@@ -112,7 +112,38 @@ Texevier::create_template(directory = "C:/Users/austi/OneDrive/Desktop/Masters/D
 
 The data used is obtained from Spotify for the two bands of Coldplay and
 Mettallica. The relevant excel files have been placed into the Question
-3 data folder.
+3 data folder and then called from there into my enviroment.
+
+``` r
+#This code is too load my data into my enviroment
+library(readr)
+Coldplay <- read_csv("C:/Users/austi/OneDrive/Desktop/Masters/Data Science/22582053/Question 3/data/Coldplay.csv")
+```
+
+    ## Rows: 232 Columns: 15
+    ## ── Column specification ────────────────────────────────────────────────────────
+    ## Delimiter: ","
+    ## chr   (2): name, album_name
+    ## dbl  (11): duration, popularity, acousticness, danceability, energy, instrum...
+    ## lgl   (1): explicit
+    ## date  (1): release_date
+    ## 
+    ## ℹ Use `spec()` to retrieve the full column specification for this data.
+    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+
+``` r
+Metallica <- read_csv("C:/Users/austi/OneDrive/Desktop/Masters/Data Science/22582053/Question 3/data/metallica.csv")
+```
+
+    ## Rows: 1468 Columns: 14
+    ## ── Column specification ────────────────────────────────────────────────────────
+    ## Delimiter: ","
+    ## chr   (2): name, album
+    ## dbl  (11): duration_ms, popularity, danceability, energy, loudness, speechin...
+    ## date  (1): release_date
+    ## 
+    ## ℹ Use `spec()` to retrieve the full column specification for this data.
+    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 
 ``` r
 library(tidyverse)
@@ -138,6 +169,102 @@ comparison report attempts to understand if their are certain attributes
 that ensure a bands success. Throughout this report it is found that the
 two bands are very different and that there are no certainties when it
 comes to what attributes a band needs to become successful.
+
+# Graphical representation of the data
+
+## Histogram: Plotting histograms to Compare the distribution of tempo values for Coldplay and Metallica songs.
+
+``` r
+# This code uses a function to create a histogram comparing tempo values. 
+tempo_distribution_function(Coldplay, Metallica, x_var = "tempo")
+```
+
+![](README_files/figure-markdown_github/unnamed-chunk-12-1.png)
+
+As can be seen in the above figure, Mettallica has on average a higher
+tempo count then that of Coldplay. What this means is that Mettallica
+tends to play songs that are of a faster pace than Coldplay. What can be
+taken from this output is that having a fast or slow tempo on average
+for a band will not hint towards the band not performing well over
+generations. This is because the above figure is evidence towards two
+successful bands with differing tempos.
+
+## Violin Plot: Compare the distribution of loudness values for Coldplay and Metallica songs using a violin plot.
+
+``` r
+#This code uses a function to compare loudness values
+data_loudness <- loudness_data_combined(Coldplay, Metallica, "Coldplay", "Metallica", "loudness")
+
+loudness_comparison_plot(data_loudness, x_var = "Band", y_var = "Loudness")
+```
+
+    ## Warning: `aes_string()` was deprecated in ggplot2 3.0.0.
+    ## ℹ Please use tidy evaluation idioms with `aes()`.
+    ## ℹ See also `vignette("ggplot2-in-packages")` for more information.
+    ## This warning is displayed once every 8 hours.
+    ## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+    ## generated.
+
+![](README_files/figure-markdown_github/unnamed-chunk-13-1.png)
+
+The purpose of the violin plot is too see the distribution of values. In
+the case of the above figure we are analyzing the distribution of the
+loudness variable for both Coldplay and Mettallica so as to compare how
+loud the two bands on average play their music. As can be seen from the
+above figure The mean values for both bands seem to be similar however,
+the differences come in when we look at the tails. When evaluating the
+tails of the above figure it is evident that Coldplay tends to the lower
+volume while Mettallic on the occasion will play the louder music.
+
+## Box Plot: Compare the distribution of multiple attributes (e.g., danceability, energy, valence) between Coldplay and Metallica songs using box plots side by side.
+
+I tried to use functional coding for this section but then the code
+wouldnt run properly as i couldnt get it perfect. I therefore settled
+for the next best thing and went for the ugly looking code.
+
+``` r
+# Combining attribute data for both bands
+attribute_data <- rbind(
+  data.frame(Band = rep("Coldplay", nrow(Coldplay)), 
+             Danceability = Coldplay$danceability,
+             Energy = Coldplay$energy,
+             Valence = Coldplay$valence),
+  data.frame(Band = rep("Metallica", nrow(Metallica)), 
+             Danceability = Metallica$danceability,
+             Energy = Metallica$energy,
+             Valence = Metallica$valence)
+)
+
+# Creating individual boxplots using a fucntion
+danceability_boxplot <- attribute_boxplot_creator(attribute_data, "Danceability")
+
+energy_boxplot <- attribute_boxplot_creator(attribute_data, "Energy")
+
+valence_boxplot <-attribute_boxplot_creator(attribute_data, "Valence")
+
+combined_boxplot <- combined_boxplot_creator(attribute_data)
+
+grid.arrange(danceability_boxplot, energy_boxplot, valence_boxplot, combined_boxplot, ncol = 2)
+```
+
+![](README_files/figure-markdown_github/unnamed-chunk-14-1.png)
+
+The final plot we will be looking at are some combined box plots which
+aims to explain the differences in the attributes of danceability,
+energy, and valence. As can be seen by the above figure, Mettallica has
+a lower danceability when compared to that of Coldplay, however, this is
+the only measure where Mettallica lags Coldplay. On the other metrics
+such as, energy and valence, Mettalic out performs Coldplay.
+
+## Conclusion
+
+Therefore, to conclude, when comparring the two generational bands of
+Coldplay and Mettallica it is evident that the bands are very different.
+Mettalica tend to play louder music with more energy, while Coldplay
+likes to play music that is softer but easier to dance too resulting in
+the attraction of different crowds. Thus from the output seen, there is
+no one formula that will lead to a band being successful. A band can be
+successful being themselves and playing music they enjoy.
 
 # Question 4
 
