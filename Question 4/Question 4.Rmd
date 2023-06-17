@@ -130,7 +130,7 @@ Netflix_data <- read_csv("C:/Users/austi/OneDrive/Desktop/Masters/Data Science/2
 
 ## Plotting Show vs Movie
 
-```{r}
+```{r warning=FALSE}
 
 Netflix_show_data <- Netflix_data_summarised(Netflix_data, "SHOW")
 Netflix_movie_data <- Netflix_data_summarised(Netflix_data, "MOVIE")

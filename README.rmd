@@ -85,6 +85,32 @@ Texevier::create_template_html(directory = "C:/Users/austi/OneDrive/Desktop/Mast
                           build_project = T, open_project = T)
 ```
 
+#  QUestion 3 
+
+## Setting up the file structure for Question 3
+
+```{r eval=FALSE}
+Texevier::create_template(directory = "C:/Users/austi/OneDrive/Desktop/Masters/Data Science/22582053",
+                          template_name = "Question 3",
+                          build_project = T, open_project = T)
+```
+
+## Data 
+
+The data used is obtained from Spotify for the two bands of Coldplay and Mettallica. The relevant excel files have been placed into the Question 3 data folder. 
+
+```{r}
+library(tidyverse)
+list.files('C:/Users/austi/OneDrive/Desktop/Masters/Data Science/22582053/Question 3/code', full.names = T, recursive = T) %>% as.list() %>% walk(~source(.))
+
+#This code is used to call in the code used for Question 3. 
+```
+
+## Introduction
+
+This comparison report will take a deep dive into the various attributes of Coldplay and Mettallica, such as, tempo, loudness and valence. this comparison report attempts to understand if their are certain attributes that ensure a bands success. Throughout this report it is found that the two bands are very different and that there are no certainties when it comes to what attributes a band needs to become successful.
+
+
 # Question 4 
 
 ## Setting up the file structure for Question 4 
@@ -92,6 +118,16 @@ Texevier::create_template_html(directory = "C:/Users/austi/OneDrive/Desktop/Mast
 ```{r eval=FALSE}
 Texevier::create_template(directory = "C:/Users/austi/OneDrive/Desktop/Masters/Data Science/22582053",
                           template_name = "Question 4",
+                          build_project = T, open_project = T)
+```
+
+# Question 5
+
+## Setting up the file structure for Question 5
+
+```{r eval=FALSE}
+Texevier::create_template_html(directory = "C:/Users/austi/OneDrive/Desktop/Masters/Data Science/22582053",
+                          template_name = "Question 5",
                           build_project = T, open_project = T)
 ```
 
