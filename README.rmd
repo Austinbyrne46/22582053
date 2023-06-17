@@ -329,7 +329,7 @@ From the above scatter plot it is evident that shows outperform movies. Shows ha
 
  I really did try to use functional coding here but it was not working so i had to resort to the old ugly way of coding. 
  
-```{r Figure 2, warning =  FALSE, fig.align = 'center', fig.cap = "Table of averages \\label{Figure2}", fig.height = 6, fig.width = 6, dev = 'png'}
+```{r Figure 2, warning =  FALSE, fig.align = 'center', fig.cap = "Table of averages \\label{Figure2}", fig.height = 6, fig.width = 6, dev = 'png', message=FALSE}
 
 library(dplyr)
 library(gt)
