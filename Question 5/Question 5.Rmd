@@ -16,14 +16,7 @@ output:
     # change to true for a self-contained document, but it'll be a litte slower for Pandoc to render
     self_contained: TRUE
 abstract: |
-    This is an abstract. Much can be written here. Uncomment this line to go without an abstract.
-    Abstracts have no spaces, but can have bullets.
-
-    Bullets can be created as follows
-
-    + You can add bullets, but do not add colons please.
-
-    + Line breaks are also not permitted.
+   The main aim of this analysis is to understand which apps perform the best by looking at the total installs, sentiment and average rating. From my analysis done it is evident that an app that focuses on communication and gaming will be best. In terms of paid vs free app sthere is not much difference in the rating therefore since free apps are more accessable by more people I would suggest creating a free communication or gaming app. 
 
 ---
 
@@ -41,6 +34,7 @@ list.files('C:/Users/austi/OneDrive/Desktop/Masters/Data Science/22582053/Questi
 
 # Introduction {-}
 
+In this analysis I look at the total installs per category of app, the sentiment of each category and whther there is a difference in rating and sentiment for paid a free apps. 
 
 # Data 
 
@@ -58,7 +52,7 @@ googleplaystore_user_reviews <- read_csv("C:/Users/austi/OneDrive/Desktop/Master
 ```{r}
 library(dplyr)
 library(lubridate)
-
+#Creating a date column to i could observe the data over time if needed. 
 google_playstore$`Last Updated` <- mdy(google_playstore$`Last Updated`)
 
 ```
@@ -87,10 +81,14 @@ Plots_combined <- plots_combining_function(installs_bar_plot, plot_sentiment)
 print(Plots_combined)
 ```
 
+From the above plot it is evident that communication and gamming apps dominate the total installs. Although there will be a decent amount of competition there is a lot of growth opportunity for a pp that focuses on communication/gaming, possibly a market for joining the two categories. 
+
 # Table for average rating free vs paid apps
 
 
 ```{r}
+
+# Using functions to get the average rating and sentiment polarity for free and paid apps
 free_app_rating <- rating_average_calculator(app_merged_data, "Free")
 paid_app_rating <- rating_average_calculator(app_merged_data, "Paid")
 free_app_sentiment_polarity <- sentiment_polarity_calculator(app_merged_data, "Free")
@@ -101,20 +99,12 @@ table_app_rating_sentiment_average <- table_rating_polarity_average(app_merged_d
 table_app_rating_sentiment_average
 ```
 
+From the above table it is seen that gaming apps have the highest positive sentiment, however, these specific apps tend to have a decent amount of negative sentiment to them. This my hint towards better opportunity for communication apps as they are not as heavily dominated by negative sentiment. 
 
 
-# References {-}
+# Conclusion
 
-<div id="refs"></div>
-
-
-# Appendix {-}
-
-## Appendix A {-}
-
-Some appendix information here
-
-## Appendix B {-}
+Look into creating an app that focuses on communication due to the high installs ( This means there is a demand for these types of apps ). I would suggest communication over gaming as you are targeting a larger market and are less likely to be dominated by negative sentiment. 
 
 
 

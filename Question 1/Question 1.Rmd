@@ -16,14 +16,7 @@ output:
     # change to true for a self-contained document, but it'll be a litte slower for Pandoc to render
     self_contained: TRUE
 abstract: |
-    This is an abstract. Much can be written here. Uncomment this line to go without an abstract.
-    Abstracts have no spaces, but can have bullets.
-
-    Bullets can be created as follows
-
-    + You can add bullets, but do not add colons please.
-
-    + Line breaks are also not permitted.
+    Covid-19, understanding why some continents had higher cases but lower deaths.  
 
 ---
 
@@ -46,12 +39,15 @@ list.files('C:/Users/austi/OneDrive/Desktop/Masters/Data Science/22582053/Questi
 
 # Introduction {-}
 
-
+Covid-19 caused havoc around the world. Covid-19 effected young and old individuals as they feared for their life as well as their loved ones. As total cases and deaths rose and months went on with no cure people feared for the worst. Fortunately, governments have been able to contain the various and lives are back to somewhat normal. This global pandemic provides for some interesting stats to look into. In this analysis I will provide insight into the total cases per continent and the total deaths per continent which can provide for some interesting narratives. 
 
 
 # Data 
 
+The data is from  OWID (Our World in Data).
+
 ```{r include=FALSE}
+#Loading the data 
 covid_data_description <- read_csv("C:/Users/austi/OneDrive/Desktop/Masters/Data Science/22582053/Question 1/data/covid_data_description.csv")
 Deaths_by_cause <- read_csv("C:/Users/austi/OneDrive/Desktop/Masters/Data Science/22582053/Question 1/data/Deaths_by_cause.csv")
 owid_covid_data <- read_csv("C:/Users/austi/OneDrive/Desktop/Masters/Data Science/22582053/Question 1/data/owid-covid-data.csv")
@@ -61,6 +57,7 @@ owid_covid_data <- read_csv("C:/Users/austi/OneDrive/Desktop/Masters/Data Scienc
 # obtaining the total cases, total deaths on the last date: 
 
 ```{r}
+#USing a function to obtain total cases and deaths 
 Final_total_covid_cases <- obtain_total_covid_casses_function(owid_covid_data)
 print(Final_total_covid_cases)
 
@@ -77,26 +74,20 @@ covid_continent_data <- continent_comparer_function(owid_covid_data, continent) 
 bar_plot_covid_data(Final_total_covid_cases)
 ```
 
+As can be seen from the above figure Europe had a large majority of the Covid-19 cases with Asia coming in second. An interesting insight to discuss would be why did Europe have so many positive cases? Did they fail to act quickly? Did they have a variant that was stronger than once seen on other continents? Also interesting from the figure is that Africa had a low share of the total cases. Therefore, another interesting aspect to consider would be what did Africa do differently to the likes of Asia and South Africa to have so few cases. 
+
 ## Total deaths 
 
 ```{r}
 bar_plot_covid_deaths_data(Final_total_covid_deaths)
 ```
 
+When looking at the total deaths per continent we find some more interesting data. One might expect the same distribution as the one found in the first figure, More cases equals more deaths. However, this is not the case. South and North America now account for a larger proportion of the the deaths which means that they had a higher death rate then that of Europe or Asia. Another fact to pick up on is that Africa's proportion has also increased meaning that Africa also had a larger death rate. Some interesting aspects to look into would be why did this happen? Why did some continents have high total cases but lower death rates? Is it down to over all health? Do these continents pride themselves on being health? Do they have better health care systems? Did they get vaccines first? There are many interesting aspects that can be followed up on after just looking into two simple plots. 
 
 
-# References {-}
+# Conclusion 
 
-<div id="refs"></div>
-
-
-# Appendix {-}
-
-## Appendix A {-}
-
-Some appendix information here
-
-## Appendix B {-}
+To conclude by just looking at these two simple plots, one can make some interesting guesses. Does Africa have a poorer health care system then the likes of Europe and Asia resulting in higher death rates. More interestingly, why did North and South Africa get hit so hard? 
 
 
 

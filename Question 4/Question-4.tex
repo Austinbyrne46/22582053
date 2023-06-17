@@ -188,13 +188,11 @@ Africa}
 
 \begin{abstract}
 \small{
-Abstract to be written here. The abstract should not be too long and
-should provide the reader with a good understanding what you are writing
-about. Academic papers are not like novels where you keep the reader in
-suspense. To be effective in getting others to read your paper, be as
-open and concise about your findings here as possible. Ideally, upon
-reading your abstract, the reader should feel he / she must read your
-paper in entirety.
+THis report looks into what Netflix did right and what they did wrong.
+Using the data provided i was able to understand that TV shows performed
+better tahn movies and the age restiction does have and impact on the
+succes. We should look at airing Tv shows With an age restiction of
+TV-MA or TV-14.
 }
 \end{abstract}
 
@@ -237,16 +235,32 @@ paper in entirety.
 \section{\texorpdfstring{Introduction
 \label{Introduction}}{Introduction }}\label{introduction}}
 
+In this analysis i will be looking at data from Netflix on what worked
+well for Netflix and what did not. I will first be comparing movies and
+TV shows so as to visualize which is best for overall performance of the
+streaming service. Then i will be looking at whether different age
+restricted shows and movies did better than others and if so which
+performed the best.
+
 \hypertarget{data}{%
 \section{Data}\label{data}}
 
 \hypertarget{loading-the-data-in}{%
 \subsection{Loading the data in}\label{loading-the-data-in}}
 
+The data is taken from Netflix.
+
 \hypertarget{plotting-show-vs-movie}{%
 \subsection{Plotting Show vs Movie}\label{plotting-show-vs-movie}}
 
-\includegraphics{Question-4_files/figure-latex/unnamed-chunk-2-1.pdf}
+\begin{figure}[H]
+
+{\centering \includegraphics{Question-4_files/figure-latex/Figure 1-1} 
+
+}
+
+\caption{Show vs movie \label{Figure1}}\label{fig:Figure 1}
+\end{figure}
 
 \begin{verbatim}
 ## TableGrob (2 x 1) "arrange": 2 grobs
@@ -254,6 +268,11 @@ paper in entirety.
 ## 1 1 (1-1,1-1) arrange gtable[layout]
 ## 2 2 (2-2,1-1) arrange gtable[layout]
 \end{verbatim}
+
+From the above scatter plot \ref{Figure1}, it is evident that shows
+outperform movies. Shows have higher overall scores and ratings. To
+further ensure this scatter plot provides the correct interpretation, i
+will next look at the averages in a table.
 
 \hypertarget{table-to-compare-show-and-movie}{%
 \subsection{Table to compare Show and
@@ -271,34 +290,36 @@ Movie & $6.3$ & $19.8$ & $27,097.4$ \\
 \bottomrule
 \end{longtable}
 
+From the above table \ref{Figure2}, it is evident that the suspension
+made by looking at \ref{Figure2} are correct. Shows do outperform
+movies. Shows have a much higher popularity and a higher score. Thus it
+seems to be that it would be more beneficial for a streaming service to
+focus on TV shows over movies. Next I will be looking at which age
+resiticted shows and movies are the most popular and highest rated.
+
 \hypertarget{age-certification-plot}{%
 \subsection{Age certification plot}\label{age-certification-plot}}
 
-\includegraphics{Question-4_files/figure-latex/unnamed-chunk-4-1.pdf}
+\begin{figure}[H]
 
-\newpage
+{\centering \includegraphics{Question-4_files/figure-latex/Figure 3-1} 
 
-\hypertarget{references}{%
-\section*{References}\label{references}}
-\addcontentsline{toc}{section}{References}
+}
 
-\hypertarget{refs}{}
-\begin{CSLReferences}{0}{0}
-\end{CSLReferences}
+\caption{age certification \label{Figure3}}\label{fig:Figure 3}
+\end{figure}
 
-\hypertarget{appendix}{%
-\section*{Appendix}\label{appendix}}
-\addcontentsline{toc}{section}{Appendix}
+From the above figure \ref{Figure3}, it is evident that if a streaming
+service wnats to put themselves in the best position to succeseed, they
+should look at focusing on tv shows with a few movies with the age
+certification of TV\_MA or TV-14.
 
-\hypertarget{appendix-a}{%
-\subsection*{Appendix A}\label{appendix-a}}
-\addcontentsline{toc}{subsection}{Appendix A}
+\hypertarget{conclusion}{%
+\section{Conclusion}\label{conclusion}}
 
-Some appendix information here
-
-\hypertarget{appendix-b}{%
-\subsection*{Appendix B}\label{appendix-b}}
-\addcontentsline{toc}{subsection}{Appendix B}
+After a short but thurough analysis it is suggested that if a streaing
+service wants to learn from Netflex they should look at focusing on tv
+shows with a few movies with the age certification of TV\_MA or TV-14.
 
 \bibliography{Tex/ref}
 

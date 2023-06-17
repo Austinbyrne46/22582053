@@ -16,14 +16,7 @@ output:
     # change to true for a self-contained document, but it'll be a litte slower for Pandoc to render
     self_contained: TRUE
 abstract: |
-    This is an abstract. Much can be written here. Uncomment this line to go without an abstract.
-    Abstracts have no spaces, but can have bullets.
-
-    Bullets can be created as follows
-
-    + You can add bullets, but do not add colons please.
-
-    + Line breaks are also not permitted.
+    Please dont move to England, the whether is not as nice as you think and i am here to show you with some graphs. 
 
 ---
 
@@ -44,6 +37,8 @@ list.files('C:/Users/austi/OneDrive/Desktop/Masters/Data Science/22582053/Questi
 \newpage
 
 # Introduction {-}
+
+I will be showing you the max, average and min temerature averages through the past several years, I will then illustrtate how much sun on average London gets looking at the past several year and then looking soely on the year of 2020. 
 
 
 # Data 
@@ -66,15 +61,18 @@ library(lubridate)
 london_max_mean_min <- london_weather_trends(london_weather)
 ```
 
+
 ## Plotting the max, min and average
 
 ```{r}
 temp_trend_plot(london_max_mean_min)
 ```
 
+As can be seen in the above figure the min temerature gets to around minus 10 degrees which i know you as a fair weather girl will not enjoy. Furthermore the average temperature is only at a mere 10 degrees. 
+
 ## Looking at the amount of sunshine london gets
 
-## Creating a data frame with sunshine
+### Creating a data frame with sunshine
 
 ```{r}
 
@@ -83,12 +81,15 @@ london_sunshine <- calculate_avg_sunshine(london_weather)
 
 ```
 
-## Ploting hours of sunshine per day on average
+### Ploting hours of sunshine per day on average
 
 ```{r}
 plot_avg_sunshine(london_sunshine)
 
 ```
+
+As can be seen from the above figure there are many years that receive less than 5 to 7 hpurs of sunchine a day on average. I know you wont enjoy that. You may be saying that recently it has been getting better, that is why I have made the next plot. 
+
 
 ## Plotting London hours of sunshine per day for 2020
 
@@ -103,19 +104,12 @@ plot_sunshine_per_day(london_sunshine_last_year)
 
 ```
 
-
-# References {-}
-
-<div id="refs"></div>
+From the above figure the red lines show days where there was sunshine for over 7 overs and the blue lines show days throughout the year where there was less than 7 hours of sunshine. As you can see there are way too many days (which can be consecutive) where there is less than 7 hours of sun. 
 
 
-# Appendix {-}
+# Conclusion 
 
-## Appendix A {-}
-
-Some appendix information here
-
-## Appendix B {-}
+PLease stay, there is not enough sun and the temp is way too cold for you. 
 
 
 

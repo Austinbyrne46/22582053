@@ -92,7 +92,7 @@ output:
     fig_width: 3.5 # Adjust default figure sizes. This can also be done in the chunks of the text.
     fig_height: 3.5
 abstract: |
-  Abstract to be written here. The abstract should not be too long and should provide the reader with a good understanding what you are writing about. Academic papers are not like novels where you keep the reader in suspense. To be effective in getting others to read your paper, be as open and concise about your findings here as possible. Ideally, upon reading your abstract, the reader should feel he / she must read your paper in entirety.
+  THis report looks into what Netflix did right and what they did wrong. Using the data provided i was able to understand that TV shows performed better tahn movies and the age restiction does have and impact on the succes. We should look at airing Tv shows With an age restiction of TV-MA or TV-14. 
 ---
 
 <!-- First: Set your default preferences for chunk options: -->
@@ -119,19 +119,25 @@ list.files('C:/Users/austi/OneDrive/Desktop/Masters/Data Science/22582053/Questi
 
 # Introduction \label{Introduction}
 
+In this analysis i will be looking at data from Netflix on what worked well for Netflix and what did not. I will first be comparing movies and TV shows so as to visualize which is best for overall performance of the streaming service. Then i will be looking at whether different age restricted shows and movies did better than others and if so which performed the best. 
+
 
 # Data 
 
 ## Loading the data in 
 
+The data is taken from Netflix. 
+
 ```{r}
+#Reading in Netflic data
 Netflix_data <- read_csv("C:/Users/austi/OneDrive/Desktop/Masters/Data Science/22582053/Question 4/data/titles.csv")
 ```
 
 ## Plotting Show vs Movie
 
-```{r warning=FALSE}
+```{r Figure 1, warning =  FALSE, fig.align = 'center', fig.cap = "Show vs movie \\label{Figure1}", fig.height = 6, fig.width = 6, dev = 'png'}
 
+#Using functions to plot a scatterplot
 Netflix_show_data <- Netflix_data_summarised(Netflix_data, "SHOW")
 Netflix_movie_data <- Netflix_data_summarised(Netflix_data, "MOVIE")
 
@@ -140,8 +146,12 @@ Netflix_combined_plot(Netflix_show_data, Netflix_movie_data)
 
 ```
 
+From the above scatter plot \ref{Figure1}, it is evident that shows outperform movies. Shows have higher overall scores and ratings. To further ensure this scatter plot provides the correct interpretation, i will next look at the averages in a table. 
+
+
 ## Table to compare Show and movie
-```{r}
+```{r Figure 2, warning =  FALSE, fig.align = 'center', fig.cap = "Table of averages \\label{Figure2}", fig.height = 6, fig.width = 6, dev = 'png'}
+
 library(dplyr)
 library(gt)
 
@@ -187,9 +197,11 @@ table
 
 ```
 
+From the above table it is evident that the suspension made by \ref{Figure1} are correct. Shows do outperform movies. Shows have a much higher popularity and a higher score. Thus it seems to be that it would be more beneficial for a streaming service to focus on TV shows over movies. Next I will be looking at which age restricted shows and movies are the most popular and highest rated. 
+
 ## Age certification plot
 
-```{r}
+```{r Figure 3, warning =  FALSE, fig.align = 'center', fig.cap = "age certification \\label{Figure3}", fig.height = 6, fig.width = 6, dev = 'png'}
 library(ggplot2)
 
 # Plotting the age certification plot
@@ -197,21 +209,14 @@ plot_age_certification(Netflix_data)
 
 ```
 
+From the above figure \ref{Figure3}, it is evident that if a streaming service wnats to put themselves in the best position to succeseed, they should look at focusing on tv shows with a few movies with the age certification of TV_MA or TV-14. 
+
+# Conclusion 
+
+After a short but thurough analysis it is suggested that if a streaing service wants to learn from Netflex they should look at focusing on tv shows with a few movies with the age certification of TV_MA or TV-14. 
+
 <!-- Make title of bibliography here: -->
 <!-- \newpage -->
 
-\newpage
 
-# References {-}
-
-<div id="refs"></div>
-
-
-# Appendix {-}
-
-## Appendix A {-}
-
-Some appendix information here
-
-## Appendix B {-}
 
